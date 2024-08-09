@@ -1,12 +1,14 @@
 package com.storehouse.catalogservice.repository;
 
 import com.storehouse.catalogservice.domain.Part;
+import org.springframework.stereotype.Repository;
 
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 
+@Repository
 public class InMemoryPartRepository implements PartRepository {
     private static final Map<String, Part> parts = new ConcurrentHashMap<>();
     @Override
