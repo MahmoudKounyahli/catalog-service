@@ -16,7 +16,7 @@ public class PartJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        var part = new Part("0123456789", "name", "description", 5.5, 4, "category");
+        var part = Part.of("0123456789", "name", "description", 5.5, 4, "category");
         var jsonContent = json.write(part);
         assertThat(jsonContent).extractingJsonPathStringValue("@.partNumber")
                 .isEqualTo(part.partNumber());
@@ -46,6 +46,6 @@ public class PartJsonTests {
                 """;
         assertThat(json.parse(content))
                 .usingRecursiveComparison()
-                .isEqualTo(new Part("0123456789", "name", "description", 5.5, 4, "category"));
+                .isEqualTo(Part.of("0123456789", "name", "description", 5.5, 4, "category"));
     }
 }

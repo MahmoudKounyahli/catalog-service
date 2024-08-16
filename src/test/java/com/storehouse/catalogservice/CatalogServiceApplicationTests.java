@@ -20,7 +20,7 @@ class CatalogServiceApplicationTests {
 
 	@Test
 	void whenPostRequestThenPartCreated() {
-		var expectedPart = new Part("0123456789", "name", "description", 5.5, 4, "category");
+		var expectedPart = Part.of("0123456789", "name", "description", 5.5, 4, "category");
 
 		webTestClient
 				.post()

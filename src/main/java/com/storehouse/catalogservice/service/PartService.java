@@ -38,12 +38,16 @@ public class PartService {
         return partRepository.findByPartNumber(partNumber)
                 .map(existingPart -> {
                     var partToUpdate = new Part(
+                            existingPart.id(),
                             existingPart.partNumber(),
                             part.name(),
                             part.description(),
                             part.price(),
                             part.quantity(),
-                            part.category());
+                            part.category(),
+                            existingPart.createdDate(),
+                            existingPart.lastModifiedDate(),
+                            existingPart.version());
                     return partRepository.save(partToUpdate);
                 })
                 .orElseGet(() -> addPartToCatalog(part));

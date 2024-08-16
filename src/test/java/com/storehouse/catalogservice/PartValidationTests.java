@@ -23,7 +23,7 @@ public class PartValidationTests {
 
     @Test
     void whenAllFieldsCorrectThenValidationSucceeds() {
-        var part = new Part(
+        var part = Part.of(
                 "0123456789",
                 "name",
                 "description",
@@ -36,7 +36,7 @@ public class PartValidationTests {
 
     @Test
     void whenPartNumberDefinedButIncorrectThenValidationFails() {
-        var part = new Part(
+        var part = Part.of(
                 "a0123456789",
                 "name",
                 "description",
