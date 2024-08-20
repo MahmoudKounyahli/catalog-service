@@ -26,7 +26,7 @@ public class PartJsonTests {
                 .isEqualTo(part.category());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
                 .isEqualTo(part.price());
-        assertThat(jsonContent).extractingJsonPathNumberValue("@.company")
+        assertThat(jsonContent).extractingJsonPathStringValue("@.company")
                 .isEqualTo(part.company());
         assertThat(jsonContent).extractingJsonPathStringValue("@.description")
                 .isEqualTo(part.description());
