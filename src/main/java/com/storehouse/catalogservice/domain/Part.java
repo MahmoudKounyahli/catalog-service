@@ -31,6 +31,7 @@ public record Part(
                 message = "The part price must be greater than zero."
         )
         Double price,
+        String company,
         @NotNull(message = "The part quantity must be defined.")
         @Positive(
                 message = "The part quantity must be greater than zero."
@@ -45,7 +46,7 @@ public record Part(
         @Version
         int version
 ) {
-        public static Part of(String  partNumber, String name, String description, Double price, int quantity, String category) {
-                return new Part(null, partNumber, name, description, price, quantity, category, null, null, 0);
+        public static Part of(String  partNumber, String name, String description, Double price, String company, int quantity, String category) {
+                return new Part(null, partNumber, name, description, price, company, quantity, category, null, null, 0);
         }
 }

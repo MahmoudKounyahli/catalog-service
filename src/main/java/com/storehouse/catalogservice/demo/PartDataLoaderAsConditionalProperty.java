@@ -7,6 +7,8 @@ import org.springframework.boot.context.event.ApplicationReadyEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @ConditionalOnProperty(prefix = "storehouse", name = "testdata.enabled", havingValue = "true")
 public class PartDataLoaderAsConditionalProperty {
@@ -18,11 +20,13 @@ public class PartDataLoaderAsConditionalProperty {
 
     @EventListener(ApplicationReadyEvent.class)
     public void loadPartTestData() {
+        partRepository.deleteAll();
         var part1 = Part.of(
                 "0123456789",
                 "part 1 from conditional property",
                 "part 1 do something to something",
                 22.5,
+                "company",
                 5,
                 "AAA");
         var part2 = Part.of(
@@ -30,9 +34,9 @@ public class PartDataLoaderAsConditionalProperty {
                 "part 2 from conditional property",
                 "part 2 do something to something",
                 22.5,
+                "company",
                 5,
                 "BBB");
-        partRepository.save(part1);
-        partRepository.save(part2);
+        partRepository.saveAll(List.of(part1, part2));
     }
 }

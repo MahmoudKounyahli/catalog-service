@@ -1,4 +1,4 @@
-package com.storehouse.catalogservice;
+package com.storehouse.catalogservice.valid;
 
 import com.storehouse.catalogservice.domain.Part;
 import jakarta.validation.ConstraintViolation;
@@ -28,6 +28,7 @@ public class PartValidationTests {
                 "name",
                 "description",
                 50.0,
+                "company",
                 5,
                 "category");
         Set<ConstraintViolation<Part>> violations = validator.validate(part);
@@ -41,6 +42,7 @@ public class PartValidationTests {
                 "name",
                 "description",
                 50.0,
+                "company",
                 5,
                 "category");
         Set<ConstraintViolation<Part>> violations = validator.validate(part);

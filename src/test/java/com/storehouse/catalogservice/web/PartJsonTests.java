@@ -1,4 +1,4 @@
-package com.storehouse.catalogservice;
+package com.storehouse.catalogservice.web;
 
 import com.storehouse.catalogservice.domain.Part;
 import org.junit.jupiter.api.Test;
@@ -16,7 +16,7 @@ public class PartJsonTests {
 
     @Test
     void testSerialize() throws Exception {
-        var part = Part.of("0123456789", "name", "description", 5.5, 4, "category");
+        var part = Part.of("0123456789", "name", "description", 5.5, "company",4, "category");
         var jsonContent = json.write(part);
         assertThat(jsonContent).extractingJsonPathStringValue("@.partNumber")
                 .isEqualTo(part.partNumber());
@@ -26,6 +26,8 @@ public class PartJsonTests {
                 .isEqualTo(part.category());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.price")
                 .isEqualTo(part.price());
+        assertThat(jsonContent).extractingJsonPathNumberValue("@.company")
+                .isEqualTo(part.company());
         assertThat(jsonContent).extractingJsonPathStringValue("@.description")
                 .isEqualTo(part.description());
         assertThat(jsonContent).extractingJsonPathNumberValue("@.quantity")
@@ -40,12 +42,13 @@ public class PartJsonTests {
                     "name": "name",
                     "description": "description",
                     "price": 5.5,
+                    "company": "company",
                     "quantity": 4,
                     "category": "category"
                 }
                 """;
         assertThat(json.parse(content))
                 .usingRecursiveComparison()
-                .isEqualTo(Part.of("0123456789", "name", "description", 5.5, 4, "category"));
+                .isEqualTo(Part.of("0123456789", "name", "description", 5.5, "company", 4, "category"));
     }
 }

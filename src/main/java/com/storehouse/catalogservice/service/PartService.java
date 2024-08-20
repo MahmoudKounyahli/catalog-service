@@ -43,6 +43,7 @@ public class PartService {
                             part.name(),
                             part.description(),
                             part.price(),
+                            part.company(),
                             part.quantity(),
                             part.category(),
                             existingPart.createdDate(),

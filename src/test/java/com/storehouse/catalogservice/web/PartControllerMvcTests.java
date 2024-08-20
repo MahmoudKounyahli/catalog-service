@@ -1,4 +1,4 @@
-package com.storehouse.catalogservice;
+package com.storehouse.catalogservice.web;
 
 import com.storehouse.catalogservice.exception.PartNotFoundException;
 import com.storehouse.catalogservice.rest.PartController;

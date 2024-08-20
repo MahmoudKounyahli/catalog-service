@@ -19,6 +19,7 @@ repositories {
 
 ext {
 	set('springCloudVersion', "2023.0.3")
+	set('testcontainersVersion', "1.20.1")
 }
 
 configurations {
@@ -35,9 +36,12 @@ dependencies {
 	implementation 'org.springframework.retry:spring-retry'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-data-jdbc'
+	implementation 'org.flywaydb:flyway-database-postgresql'
+	implementation 'org.flywaydb:flyway-core'
 	runtimeOnly 'org.postgresql:postgresql'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	testImplementation 'org.testcontainers:postgresql'
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
@@ -45,6 +49,7 @@ dependencies {
 dependencyManagement {
 	imports {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+		mavenBom "org.testcontainers:testcontainers-bom:${testcontainersVersion}"
 	}
 }
 
