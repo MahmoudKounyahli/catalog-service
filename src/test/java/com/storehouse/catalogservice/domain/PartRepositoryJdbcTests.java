@@ -26,7 +26,7 @@ public class PartRepositoryJdbcTests {
 
     @Test
     void findPartByPartNumberWhenExisting() {
-        var partNumber = "0123456789";
+        var partNumber = "1123456789";
         var part = Part.of(partNumber, "name", "description", 5.5, "company", 5, "category");
         jdbcAggregateTemplate.insert(part);
         Optional<Part> actualPart = partRepository.findByPartNumber(partNumber);
